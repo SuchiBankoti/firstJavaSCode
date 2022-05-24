@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+   <script>
+      const options = ["rock", "paper", "scissor"];
+
+      function computerPlay()
+       {
+         const index = Math.floor(Math.random() * options.length);
+         return index;
+
+      }
+
+      function playerPlay() 
+      {
+         let user = prompt();
+         user = user.toLowerCase();
+         const index = options.findIndex(arg => arg == user);
+         return index;
+      }
+
+
+      function playRound() 
+      {
+         const pi = playerPlay();
+         const ci = computerPlay();
+         if (ci == (pi + 1) % options.length)
+            return 'lose';
+         else if (ci == pi)
+            return 'draw';
+         else return 'win';
+
+      }
+
+      let player = 0;
+      let computer = 0;
+      for (let i = 0; i < 5; i++) 
+      {
+         if (playRound() == 'win')
+          { 
+             player++
+          }
+         else if (playRound == 'lose')
+          { 
+             computer++
+          }
+         else 
+         {
+            player += 0;
+         }
+      }
+
+      function result() 
+      {
+         if (player > computer) 
+         {
+            console.log("you win")
+         }
+         else
+          { 
+             console.log("you lose")
+          }
+      }
+
+      console.log(result());
+
+   </script>
+</body>
+
+</html>
