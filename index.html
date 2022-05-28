@@ -5,63 +5,41 @@
    <script>
       const options = ["rock", "paper", "scissor"];
 
-      function computerPlay()
-       {
+      let playerScore = 0,
+         computerScore = 0;
+
+      function computerPlay() {
          const index = Math.floor(Math.random() * options.length);
          return index;
 
       }
 
-      function playerPlay() 
-      {
-         let user = prompt();
-         user = user.toLowerCase();
-         const index = options.findIndex(arg => arg == user);
-         return index;
+      function playerPlay() {
+         const user = prompt().toLowerCase();
+         return options.findIndex(arg => arg == user);
       }
 
 
-      function playRound() 
-      {
+      function playRound() {
          const pi = playerPlay();
          const ci = computerPlay();
          if (ci == (pi + 1) % options.length)
-            return 'lose';
+            computerScore++;
          else if (ci == pi)
-            return 'draw';
-         else return 'win';
+            return;
+         playerScore++;
 
       }
 
-      let player = 0;
-      let computer = 0;
-      for (let i = 0; i < 5; i++) 
-      {
-         if (playRound() == 'win')
-          { 
-             player++
-          }
-         else if (playRound == 'lose')
-          { 
-             computer++
-          }
-         else 
-         {
-            player += 0;
-         }
+      function result() {
+         const output = playerScore > computerScore ? "you win" :
+            playerScore < computerScore ? 'you lose' : 'draw';
+         return output;
       }
 
-      function result() 
-      {
-         if (player > computer) 
-         {
-            console.log("you win")
-         }
-         else
-          { 
-             console.log("you lose")
-          }
-      }
+      for (let i = 0; i < 5; i++)
+         playRound();
+
 
       console.log(result());
 
